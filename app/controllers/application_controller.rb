@@ -4,27 +4,27 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   class Entry
-    def initialize(title, link)
+    def initialize(title, body)
       @title = title
-      @link = link
+      @body = body
     end
     attr_reader :title
-    attr_reader :link
+    attr_reader :body
   end
   
-  def scrape_reddit
+  def scrape_finimize
     require 'open-uri'
-    doc = Nokogiri::HTML(open("https://www.reddit.com/r/wow/"))
+    doc = Nokogiri::HTML(open("https://www.finimize.com/wp/"))
   
-    entries = doc.css('.entry')
+    entries = doc.css('.article')
     @entriesArray = []
     entries.each do |entry|
-      title = entry.css('p.title>a').text
-      link = entry.css('p.title>a')[0]['href']
-      @entriesArray << Entry.new(title, link)
+      title = entry.css('h3.icon-goingon').text #title "What's Going Here?"
+      body = entry.css('p').text #title "What's Going Here?"
+      @entriesArray << Entry.new(title, body)
     end
   
     # We'll just try to render the array and see what happens
-    render template: 'scrape_reddit'
+    render template: 'scrape_finimize'
   end
 end

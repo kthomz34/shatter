@@ -19,9 +19,10 @@ class ApplicationController < ActionController::Base
     entries = doc.css('.article')
     @entriesArray = []
     entries.each do |entry|
-      title = entry.css('h3.icon-goingon').text #title "What's Going Here?"
+      title = entry.css('article--head_title').text #title "What's Going Here?"
       body = entry.css('p').text #title "What's Going Here?"
       @entriesArray << Entry.new(title, body)
+      Entry.build(title: title, going_on_text: body, publish_date: DateTime.now)
     end
   
     # We'll just try to render the array and see what happens

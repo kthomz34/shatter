@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20170413222049) do
 
-  create_table "entries", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "meant_text"
     t.text     "care_text"

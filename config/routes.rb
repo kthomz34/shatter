@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'application#scrape_finimize'
+  root 'scraper#scrape_finimize'
 end

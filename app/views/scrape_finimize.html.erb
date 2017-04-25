@@ -1,6 +1,12 @@
-<h1>Finimize's Articles</h1>
+<h1>Finimize Articles</h1>
 <% @entriesArray.each do |entry| %>
   <p><%= entry.title %></p>
-  <p><%= entry.minititle %></p>
-  <p><%= entry.body %></p>
+  <p>What's going on here?</p>
+  <p><%= entry.going_on_text %></p>
+  <p>What does this mean?</p>
+  <p><%= entry.meant_text %></p>
+  <p>Why should I care?</p>
+  <p><%= entry.care_text %></p>
+  <p><%= entry.bigger_picture_text %></p>
+  <p><%= entry.publish_date %></p>
 <% end %>

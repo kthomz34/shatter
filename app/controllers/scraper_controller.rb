@@ -28,7 +28,7 @@ class ScraperController < ApplicationController
       going_on_text = entry.css('p')[0].text #going on paragraph
       meant_text = entry.css('p')[1].text #what does this mean? paragraph
       care_text = entry.css('p')[2].text #why should I care? paragraph
-      bigger_picture_text = entry.css('p, b').last.text #the bigger picture paragraph
+      bigger_picture_text = entry.css('p')[3].text #the bigger picture paragraph
       publish_date = entry.css('time').text
       @entriesArray << Entry.new(title, going_on_text, meant_text, care_text, bigger_picture_text, publish_date)
       Post.create(title: title, going_on_text: going_on_text, meant_text: meant_text, care_text: care_text, bigger_picture_text: bigger_picture_text, publish_date: publish_date)
